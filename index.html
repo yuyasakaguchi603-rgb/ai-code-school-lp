@@ -408,10 +408,138 @@ a{color:inherit;text-decoration:none}
 .stagger.visible>*:nth-child(5){transition-delay:.33s}
 .stagger.visible>*:nth-child(6){transition-delay:.4s}
 
+/* ═══════ STATS (IMPACT) ═══════ */
+.stats{background:var(--bg)}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:14px;margin-top:40px;
+}
+.stat-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px 20px;
+  text-align:center;
+  transition:all .35s;
+}
+.stat-card:hover{transform:translateY(-6px);border-color:rgba(59,130,246,.25);box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.stat-number{
+  font-family:var(--mono);
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:700;
+  line-height:1;
+  margin-bottom:8px;
+}
+.stat-subtitle{font-size:.9rem;font-weight:700;margin-bottom:6px}
+.stat-desc{font-size:.75rem;color:var(--text-sub);line-height:1.6}
+
+/* ═══════ TESTIMONIALS ═══════ */
+.testimonials{background:var(--bg-elevated)}
+.testimonial-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:16px;margin-top:40px;
+}
+.testimonial-card{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:28px 24px;
+  transition:all .35s;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.testimonial-card:hover{transform:translateY(-6px);border-color:rgba(139,92,246,.2);box-shadow:0 16px 48px rgba(0,0,0,.35)}
+.testimonial-quote{
+  font-family:var(--mono);font-size:3rem;
+  line-height:.8;color:var(--accent2);
+  opacity:.4;margin-bottom:10px;
+}
+.testimonial-text{
+  font-size:.88rem;line-height:1.85;
+  color:var(--text-sub);flex:1;
+}
+.testimonial-author{
+  margin-top:18px;
+  text-align:right;
+  font-size:.75rem;color:var(--text-muted);
+  font-family:var(--mono);
+}
+
+/* ═══════ CONTACT FORM ═══════ */
+.contact-form-wrap{
+  max-width:600px;margin:40px auto 0;
+}
+.form-group{margin-bottom:18px}
+.form-group label{
+  display:block;font-size:.8rem;font-weight:600;
+  color:var(--text-sub);margin-bottom:7px;
+  font-family:var(--mono);
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+  font-family:var(--sans);font-size:.92rem;
+  padding:12px 16px;
+  transition:border-color .2s,box-shadow .2s;
+  outline:none;
+  -webkit-appearance:none;appearance:none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:rgba(59,130,246,.5);
+  box-shadow:0 0 0 3px rgba(59,130,246,.1);
+}
+.form-group select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239090A0' stroke-width='2'%3E%3Cpath d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;background-size:16px;
+  padding-right:40px;cursor:pointer;
+}
+.form-group select option{background:var(--bg-card);color:var(--text)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.btn-submit{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#fff;padding:14px 40px;border-radius:12px;
+  font-size:.95rem;font-weight:700;
+  border:none;cursor:pointer;width:100%;justify-content:center;
+  transition:all .25s;
+  box-shadow:0 4px 24px rgba(59,130,246,.25);
+  margin-top:8px;
+}
+.btn-submit:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 40px rgba(59,130,246,.4)}
+
+/* ═══════ LINE FLOAT BUTTON ═══════ */
+.line-float{
+  position:fixed;bottom:24px;right:24px;
+  z-index:99;
+  width:56px;height:56px;border-radius:50%;
+  background:#06C755;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 20px rgba(6,199,85,.4);
+  transition:transform .25s,box-shadow .25s;
+  text-decoration:none;
+  animation:line-pulse 2.5s ease-in-out infinite;
+}
+.line-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(6,199,85,.55);animation:none}
+.line-float svg{width:32px;height:32px;fill:#fff}
+@keyframes line-pulse{
+  0%,100%{box-shadow:0 4px 20px rgba(6,199,85,.4),0 0 0 0 rgba(6,199,85,.3)}
+  50%{box-shadow:0 4px 20px rgba(6,199,85,.4),0 0 0 10px rgba(6,199,85,0)}
+}
+@media(min-width:769px){.line-float{display:none}}
+
 /* ═══════ RESPONSIVE ═══════ */
 @media(max-width:1024px){
   .profile-grid{grid-template-columns:1fr 1fr}
   .course-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonial-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   .section{padding:72px 0}
@@ -430,6 +558,9 @@ a{color:inherit;text-decoration:none}
   .profile-grid{grid-template-columns:1fr}
   .course-grid{grid-template-columns:1fr}
   .diff-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .testimonial-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
   .hero-actions{flex-direction:column}
   .btn-primary,.btn-ghost{width:100%;justify-content:center}
   .browser-bar{padding:8px 10px}
@@ -438,6 +569,7 @@ a{color:inherit;text-decoration:none}
 @media(max-width:480px){
   .container{padding:0 16px}
   .result-card{width:260px;padding:20px}
+  .stats-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -454,7 +586,7 @@ a{color:inherit;text-decoration:none}
       <a href="#results">Results</a>
       <a href="#profile">Instructor</a>
       <a href="#courses">Courses</a>
-      <a href="#cta" class="nav-cta">Contact</a>
+      <a href="#cta" class="nav-cta">お問い合わせ</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -479,7 +611,7 @@ a{color:inherit;text-decoration:none}
     <div class="hero-actions">
       <a href="#cta" class="btn-primary">
         <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        無料体験に参加する
+        無料体験に申し込む
       </a>
       <a href="#courses" class="btn-ghost">コースを見る</a>
     </div>
@@ -651,6 +783,71 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
+<!-- STATS / IMPACT -->
+<section class="section stats" id="impact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" style="font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px">Impact</div>
+      <div class="section-title" style="font-size:clamp(1.6rem,5vw,2.6rem);font-weight:800;line-height:1.25;margin-bottom:16px;letter-spacing:-.02em">数字で見る<span class="grad-text">AIの効果</span></div>
+    </div>
+    <div class="stats-grid stagger">
+      <div class="stat-card">
+        <div class="stat-number grad-text">月40時間</div>
+        <div class="stat-subtitle">業務時間の削減</div>
+        <div class="stat-desc">定型業務をAIで自動化した結果</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number grad-text">4つ</div>
+        <div class="stat-subtitle">業務アプリを開発</div>
+        <div class="stat-desc">建設業の現場で実際に稼働中</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number grad-text">90%</div>
+        <div class="stat-subtitle">コスト削減</div>
+        <div class="stat-desc">経費精算の手作業がほぼゼロに</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number grad-text">1日</div>
+        <div class="stat-subtitle">でWebサイト完成</div>
+        <div class="stat-desc">AI活用で制作期間を大幅短縮</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" style="font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px">Voice</div>
+      <div class="section-title" style="font-size:clamp(1.6rem,5vw,2.6rem);font-weight:800;line-height:1.25;margin-bottom:16px;letter-spacing:-.02em">受講者の<span class="grad-text">声</span></div>
+    </div>
+    <div class="testimonial-grid stagger">
+      <div class="testimonial-card">
+        <div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">AIなんて自分には関係ないと思っていましたが、実際に自分の業務が自動化される瞬間を見て考えが変わりました。</p>
+        </div>
+        <div class="testimonial-author">建設業 経営者 / 40代</div>
+      </div>
+      <div class="testimonial-card">
+        <div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">オンラインスクールで挫折した経験がありましたが、対面で横にいて教えてもらえるので全然違いました。</p>
+        </div>
+        <div class="testimonial-author">個人事業主 / 30代</div>
+      </div>
+      <div class="testimonial-card">
+        <div>
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">子どもがAIでゲームを作って大喜び。プログラミング教室より楽しそうにしています。</p>
+        </div>
+        <div class="testimonial-author">保護者 / 30代</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DIFFERENCE -->
 <section class="section difference" id="difference">
   <div class="container">
@@ -669,7 +866,7 @@ a{color:inherit;text-decoration:none}
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CTA / CONTACT FORM -->
 <section class="cta-section" id="cta">
   <div class="cta-glow"></div>
   <div class="cta-inner container reveal-scale">
@@ -678,10 +875,37 @@ a{color:inherit;text-decoration:none}
     </div>
     <div class="section-title">まずは<span class="grad-text">無料で体験</span>してみませんか?</div>
     <p>PCなし・知識ゼロでOK。<br>AIがコードを書く瞬間を、あなたの目で確かめてください。</p>
-    <button class="btn-glow" onclick="alert('お申し込みフォームは準備中です')">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      無料体験に申し込む
-    </button>
+    <div class="contact-form-wrap">
+      <form action="https://formspree.io/f/placeholder" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">お名前 <span style="color:var(--accent)">*</span></label>
+            <input type="text" id="contact-name" name="name" placeholder="例）坂口 侑也" required>
+          </div>
+          <div class="form-group">
+            <label for="contact-email">メールアドレス <span style="color:var(--accent)">*</span></label>
+            <input type="email" id="contact-email" name="email" placeholder="example@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="contact-course">興味のあるコース <span style="color:var(--accent)">*</span></label>
+          <select id="contact-course" name="course" required>
+            <option value="" disabled selected>コースを選択してください</option>
+            <option value="kids">Kids（小学生・中学生）</option>
+            <option value="business">Business（社会人・個人事業主）</option>
+            <option value="professional">Professional（エンジニア・開発者）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="contact-message">メッセージ（任意）</label>
+          <textarea id="contact-message" name="message" placeholder="ご質問・ご要望などお気軽にどうぞ"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          送信する
+        </button>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -691,12 +915,22 @@ a{color:inherit;text-decoration:none}
     <div class="footer-logo">AI CODE SCHOOL</div>
     <div class="footer-info">福岡県粕屋郡 | 夕方・土曜・日曜開講</div>
     <div class="footer-links">
-      <a href="#">プライバシーポリシー</a>
-      <a href="#">受講規約</a>
-      <a href="#">特定商取引法に基づく表記</a>
+      <a href="#" onclick="alert('準備中です');return false">プライバシーポリシー</a>
+      <a href="#" onclick="alert('準備中です');return false">受講規約</a>
+      <a href="#" onclick="alert('準備中です');return false">特定商取引法に基づく表記</a>
+      <a href="https://x.com/nowa_ai2026" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
     </div>
   </div>
 </footer>
+
+<!-- LINE FLOAT BUTTON -->
+<a href="https://lin.ee/placeholder" target="_blank" rel="noopener noreferrer" class="line-float" aria-label="LINEで問い合わせる">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+    <path d="M16 3C9.1 3 3.5 7.6 3.5 13.3c0 5.1 4.5 9.4 10.6 10.2.4.1 1 .3 1.1.6.1.3.1.8 0 1.1l-.2 1c-.1.3-.2 1.2 1.1.7 1.3-.5 7.3-4.3 9.9-7.3 1.8-2 2.7-4 2.7-6.3C28.5 7.6 22.9 3 16 3z"/>
+    <path fill="#06C755" d="M0 0h32v32H0z" style="display:none"/>
+    <path fill="#fff" d="M13.2 10.8h-.8c-.1 0-.2.1-.2.2v4.9c0 .1.1.2.2.2h.8c.1 0 .2-.1.2-.2V11c0-.1-.1-.2-.2-.2zM18 10.8h-.8c-.1 0-.2.1-.2.2v2.9l-2.2-3c0-.1-.1-.1-.1-.1h-.9c-.1 0-.2.1-.2.2v4.9c0 .1.1.2.2.2h.8c.1 0 .2-.1.2-.2V13l2.2 3c0 .1.1.1.1.1h.8c.1 0 .2-.1.2-.2V11c.1-.1 0-.2-.1-.2zM11.1 14.8H9V11c0-.1-.1-.2-.2-.2h-.8c-.1 0-.2.1-.2.2v4.9c0 .1 0 .1.1.2h.1H11.1c.1 0 .2-.1.2-.2v-.8c0-.2-.1-.3-.2-.3zM23.3 12c.1 0 .2-.1.2-.2v-.8c0-.1-.1-.2-.2-.2h-3.2c-.1 0-.1 0-.2.1-.1.1-.1.1-.1.2v4.9c0 .1 0 .1.1.2.1.1.1.1.2.1h3.2c.1 0 .2-.1.2-.2v-.8c0-.1-.1-.2-.2-.2h-2.2V14h2.2c.1 0 .2-.1.2-.2v-.8c0-.1-.1-.2-.2-.2h-2.2V12h2.2z"/>
+  </svg>
+</a>
 
 <script>
 // ═══════ CODE RAIN ═══════
